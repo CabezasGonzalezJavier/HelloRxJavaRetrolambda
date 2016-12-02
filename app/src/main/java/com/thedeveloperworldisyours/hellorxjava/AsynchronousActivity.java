@@ -41,6 +41,13 @@ public class AsynchronousActivity extends AppCompatActivity {
         createObservable();
     }
 
+    /**
+     * If we use it with Observable.just(),
+     * mRestClient.getFavoriteTvShows() will be evaluated immediately and block the UI thread.
+     * Enter the Observable.fromCallable() method. It gives us two important things:
+     * The code for creating the emitted value is not run until someone subscribes to the Observer.
+     * The creation code can be run on a different thread.
+     */
     private void createObservable() {
         Observable<List<String>> tvShowObservable = Observable.fromCallable(new Callable<List<String>>() {
             @Override
