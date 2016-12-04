@@ -140,17 +140,25 @@ Single.just(4).map((Integer integer) -> String.valueOf(integer))
 ---------
   Everything together and a new concept: debounce. Let’s dive in. If you want to setup a PublishSubject such that it receives values the user types into a search box, fetches a list of suggestions based on that query, and then displays them. 
  ```java
- Single.just(4).map((Integer integer) -> String.valueOf(integer))
-
-                .subscribe(new SingleSubscriber<String>() {
+ Subscription mTextWatchSubscription = mSearchResultsSubject
+                .debounce(400, TimeUnit.MILLISECONDS)
+                .observeOn(Schedulers.io())
+                .map( (String string) -> mRestClient.searchForCity(string))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<String>>() {
                     @Override
-                    public void onSuccess(String value) {
-                        mValueDisplay.setText(value);
+                    public void onCompleted() {
+
                     }
 
                     @Override
-                    public void onError(Throwable error) {
+                    public void onError(Throwable e) {
 
+                    }
+
+                    @Override
+                    public void onNext(List<String> cities) {
+                        handleSearchResults(cities);
                     }
                 });
  ``` 
