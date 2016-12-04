@@ -5,6 +5,16 @@ This is a example how to use RxJava and Retrolambda
 </p>
 
   Java 8 introduced Lambdas Expressions, unfortunately Android does not support Java 8, so we are not able to take advantage of this with RxJava. Luckily there is a library called **[Retrolambda](https://github.com/orfjackal/retrolambda)** which backports lambdas to previous versions of Java. There is also a **[gradle plugin](https://github.com/evant/gradle-retrolambda)** for Retrolambda that will allow the use of lambdas in an Android application.
+ 
+ In this RxJava there are diferent elements:
+  * BASIC(Observable)
+  * ASYNCHRONOUS
+  * SINGLES
+  * SUBJECTS
+  * MAP
+  * DEBOUNCES
+  
+  
   Basic
 ---------
   This method creates an Observable such that when an Observer subscribes, the onNext() of the Observer is immediately called with the argument provided to Observable.just(). The onCompleted() will then be called since the Observable has no other values to emit.
@@ -61,7 +71,7 @@ Observable<List<String>> tvShowObservable = Observable.fromCallable(() -> mRestC
 ```
   Singles
 ---------
-  As it turns out, there’s a simpler version of an Observable called a Single. Singles work almost exactly the same as Observables. But instead of there being an onCompleted(), onNext(), and onError(), there are only two callbacks:
+  There’s a simpler version of an Observable called a Single. Singles work almost exactly the same as Observables. But instead of there being an onCompleted(), onNext(), and onError(), there are only two callbacks:
      * onSuccess() and onError().
 ```java
 Single<List<String>> tvShowSingle = Single.fromCallable(() -> mRestClient.getFavoriteTvShows());
@@ -83,6 +93,7 @@ Single<List<String>> tvShowSingle = Single.fromCallable(() -> mRestClient.getFav
 ```
   Subjects
 ---------
+  Subjects are special objects that are both an Observable and an Observer.
   With a PublishSubject, as soon as you put something in one end of the pipe it immediately comes out the other.
 ```java
 PublishSubject<Integer> mCounterEmitter.subscribe(new Observer<Integer>() {
@@ -104,11 +115,12 @@ PublishSubject<Integer> mCounterEmitter.subscribe(new Observer<Integer>() {
 ```
   It increments a variable called mCounter. It calls onNext() on the mCounterEmitter with the new value of mCounter.
 ```java
+mCounter ++;
 mCounterEmitter.onNext(mCounter);
 ```
   Map
 ---------
-  You can think of map as a function that takes in one value and outputs another value. Usually there is some relationship between value put in to the map and the value that is output.
+  It's a function that takes in one value and outputs another value. Usually there is some relationship between value put in to the map and the value that is output.
  ```java
 Single.just(4).map((Integer integer) -> String.valueOf(integer))
 
@@ -126,7 +138,7 @@ Single.just(4).map((Integer integer) -> String.valueOf(integer))
 ```        
   Bringing it All Together
 ---------
-  You can think of map as a function that takes in one value and outputs another value. Usually there is some relationship   between value put in to the map and the value that is output.
+  Everything together and a new concept: debounce. Let’s dive in. If you want to setup a PublishSubject such that it receives values the user types into a search box, fetches a list of suggestions based on that query, and then displays them. 
  ```java
  Single.just(4).map((Integer integer) -> String.valueOf(integer))
 
