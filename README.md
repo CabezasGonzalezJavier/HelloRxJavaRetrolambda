@@ -17,7 +17,7 @@ This is a example how to use RxJava and Retrolambda
   
   Basic
 ---------
-  This method creates an Observable such that when an Observer subscribes, the onNext() of the Observer is immediately called with the argument provided to Observable.just(). The onCompleted() will then be called since the Observable has no other values to emit.
+  This method creates an Observable such that when an Observer subscribes, the onNext() of the Observer is immediately called with the argument provided to Observable.just(). The onCompleted() will then be called since the Observable has no other values to emit:
 
 ```java  
 Observable<List<String>> listObservable = Observable.just(getColorList());
