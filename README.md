@@ -4,8 +4,9 @@ This is a example how to use RxJava and Retrolambda
     <img src="https://github.com/CabezasGonzalezJavier/HelloRxJavaRetrolambda/blob/master/helloRxJavaRetrolambda.jpg" alt="Web Launcher"/>
 </p>
 
-Java 8 introduced Lambdas Expressions, unfortunately Android does not support Java 8, so we are not able to take advantage of this with RxJava. Luckily there is a library called * **[Retrolambda](https://github.com/orfjackal/retrolambda)** which backports lambdas to previous versions of Java. There is also a * **[gradle plugin](https://github.com/evant/gradle-retrolambda)** for Retrolambda that will allow the use of lambdas in an Android application.
-# Basic
+Java 8 introduced Lambdas Expressions, unfortunately Android does not support Java 8, so we are not able to take advantage of this with RxJava. Luckily there is a library called **[Retrolambda](https://github.com/orfjackal/retrolambda)** which backports lambdas to previous versions of Java. There is also a **[gradle plugin](https://github.com/evant/gradle-retrolambda)** for Retrolambda that will allow the use of lambdas in an Android application.
+  Basic
+---------
 This method creates an Observable such that when an Observer subscribes, the onNext() of the Observer is immediately called with the argument provided to Observable.just(). The onCompleted() will then be called since the Observable has no other values to emit.
 
 ```java  
@@ -30,8 +31,8 @@ Observable<List<String>> listObservable = Observable.just(getColorList());
         });
 
 ```
-# Asynchronous
-
+  Asynchronous
+---------
 If we use it with Observable.just(), mRestClient.getFavoriteTvShows() will be evaluated immediately and block the UI thread. Enter the Observable.fromCallable() method. It gives us two important things:
      * The code for creating the emitted value is not run until someone subscribes to the Observer.
      * The creation code can be run on a different thread.
@@ -58,7 +59,8 @@ Observable<List<String>> tvShowObservable = Observable.fromCallable(() -> mRestC
                             }
                         });
 ```
-# Singles
+Singles
+---------
 As it turns out, there’s a simpler version of an Observable called a Single. Singles work almost exactly the same as Observables. But instead of there being an onCompleted(), onNext(), and onError(), there are only two callbacks:
      * onSuccess() and onError().
 ```java
@@ -89,11 +91,11 @@ The project is setup using:
  * **[Retrolambda](https://github.com/orfjackal/retrolambda)**
  * **[gradle plugin](https://github.com/evant/gradle-retrolambda)**
 
- Further reading
+# Further reading
 
   As the above only gives a rough overview of rxjava example I'd strongly recommend checking out the following:
   
-  * **[rxandroidexamples](https://github.com/klnusbaum/rxandroidexamples)**
+  * **[rxandroidexamples](https://github.com/klnusbaum/rxandroidexamples)**  by Kurtis Nusbaum
 
 # Requirements
 
