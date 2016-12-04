@@ -15,8 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BasicActivity"/>
+        <activity android:name=".BasicActivity" />
         <activity android:name=".AsynchronousActivity" />
+        <activity android:name=".SinglesActivity" />
+        <activity android:name=".SubjectsActivity" />
+        <activity android:name=".MapActivity" />
+        <activity android:name=".TogetherActivity"></activity>
     </application>
 
 </manifest>

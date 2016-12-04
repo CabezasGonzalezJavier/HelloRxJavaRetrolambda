@@ -22,7 +22,6 @@ public class BasicActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.basic_act);
         configureLayout();
         createObservable();
     }

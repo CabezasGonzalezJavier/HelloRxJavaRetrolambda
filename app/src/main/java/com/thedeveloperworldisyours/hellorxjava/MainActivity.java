@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_act);
 
         ButterKnife.bind(this);
         mLayoutManager = new LinearLayoutManager(this);
@@ -38,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         List<String> list = new ArrayList<>();
         list.add(0, "Basic");
         list.add(1, "Asynchronous");
+
+        list.add(2, "Singles");
+        list.add(3, "Subjects");
+
+        list.add(4, "Map");
+        list.add(5, "Together");
 
         return list;
     }

@@ -33,7 +33,6 @@ public class AsynchronousActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.asynchronous_act);
 
 
         mRestClient = new RestClient(this);

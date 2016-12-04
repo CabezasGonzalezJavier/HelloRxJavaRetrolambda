@@ -41,16 +41,29 @@ public class MainAdapter extends RecyclerView.Adapter<SimpleStringAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(mContext, BasicActivity.class);
                 switch (position) {
                     case 0:
-                        Intent intent = new Intent(mContext, BasicActivity.class);
-                        mContext.startActivity(intent);
+                        intent = new Intent(mContext, BasicActivity.class);
                         break;
                     case 1:
-                        Intent intentAsynchronousActivity = new Intent(mContext, AsynchronousActivity.class);
-                        mContext.startActivity(intentAsynchronousActivity);
+                        intent = new Intent(mContext, AsynchronousActivity.class);
+                        break;
+                    case 2:
+                        intent = new Intent(mContext, SinglesActivity.class);
+                        break;
+                    case 3:
+                        intent = new Intent(mContext, SubjectsActivity.class);
+                        break;
+                    case 4:
+                        intent = new Intent(mContext, MapActivity.class);
+                        break;
+                    case 5:
+                        intent = new Intent(mContext, TogetherActivity.class);
                         break;
                 }
+                mContext.startActivity(intent);
             }
         });
     }
