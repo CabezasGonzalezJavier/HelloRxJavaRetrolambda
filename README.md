@@ -4,10 +4,10 @@ This is a example how to use RxJava and Retrolambda
     <img src="https://github.com/CabezasGonzalezJavier/HelloRxJavaRetrolambda/blob/master/helloRxJavaRetrolambda.jpg" alt="Web Launcher"/>
 </p>
 
-Java 8 introduced Lambdas Expressions, unfortunately Android does not support Java 8, so we are not able to take advantage of this with RxJava. Luckily there is a library called **[Retrolambda](https://github.com/orfjackal/retrolambda)** which backports lambdas to previous versions of Java. There is also a **[gradle plugin](https://github.com/evant/gradle-retrolambda)** for Retrolambda that will allow the use of lambdas in an Android application.
+  Java 8 introduced Lambdas Expressions, unfortunately Android does not support Java 8, so we are not able to take advantage of this with RxJava. Luckily there is a library called **[Retrolambda](https://github.com/orfjackal/retrolambda)** which backports lambdas to previous versions of Java. There is also a **[gradle plugin](https://github.com/evant/gradle-retrolambda)** for Retrolambda that will allow the use of lambdas in an Android application.
   Basic
 ---------
-This method creates an Observable such that when an Observer subscribes, the onNext() of the Observer is immediately called with the argument provided to Observable.just(). The onCompleted() will then be called since the Observable has no other values to emit.
+  This method creates an Observable such that when an Observer subscribes, the onNext() of the Observer is immediately called with the argument provided to Observable.just(). The onCompleted() will then be called since the Observable has no other values to emit.
 
 ```java  
 Observable<List<String>> listObservable = Observable.just(getColorList());
@@ -33,7 +33,7 @@ Observable<List<String>> listObservable = Observable.just(getColorList());
 ```
   Asynchronous
 ---------
-If we use it with Observable.just(), mRestClient.getFavoriteTvShows() will be evaluated immediately and block the UI thread. Enter the Observable.fromCallable() method. It gives us two important things:
+  If we use it with Observable.just(), mRestClient.getFavoriteTvShows() will be evaluated immediately and block the UI thread. Enter the Observable.fromCallable() method. It gives us two important things:
      * The code for creating the emitted value is not run until someone subscribes to the Observer.
      * The creation code can be run on a different thread.
 ```java
@@ -59,9 +59,9 @@ Observable<List<String>> tvShowObservable = Observable.fromCallable(() -> mRestC
                             }
                         });
 ```
-Singles
+  Singles
 ---------
-As it turns out, there’s a simpler version of an Observable called a Single. Singles work almost exactly the same as Observables. But instead of there being an onCompleted(), onNext(), and onError(), there are only two callbacks:
+  As it turns out, there’s a simpler version of an Observable called a Single. Singles work almost exactly the same as Observables. But instead of there being an onCompleted(), onNext(), and onError(), there are only two callbacks:
      * onSuccess() and onError().
 ```java
 Single<List<String>> tvShowSingle = Single.fromCallable(() -> mRestClient.getFavoriteTvShows());
@@ -81,7 +81,69 @@ Single<List<String>> tvShowSingle = Single.fromCallable(() -> mRestClient.getFav
                     }
                 }); 
 ```
+  Subjects
+---------
+  With a PublishSubject, as soon as you put something in one end of the pipe it immediately comes out the other.
+```java
+PublishSubject<Integer> mCounterEmitter.subscribe(new Observer<Integer>() {
+            @Override
+            public void onCompleted() {
 
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                mCounterDisplay.setText(String.valueOf(integer));
+            }
+        });
+```
+  It increments a variable called mCounter. It calls onNext() on the mCounterEmitter with the new value of mCounter.
+```java
+mCounterEmitter.onNext(mCounter);
+```
+  Map
+---------
+  You can think of map as a function that takes in one value and outputs another value. Usually there is some relationship between value put in to the map and the value that is output.
+ ```java
+Single.just(4).map((Integer integer) -> String.valueOf(integer))
+
+                .subscribe(new SingleSubscriber<String>() {
+                    @Override
+                    public void onSuccess(String value) {
+                        mValueDisplay.setText(value);
+                    }
+
+                    @Override
+                    public void onError(Throwable error) {
+
+                    }
+                });
+```        
+  Bringing it All Together
+---------
+  You can think of map as a function that takes in one value and outputs another value. Usually there is some relationship   between value put in to the map and the value that is output.
+ ```java
+ Single.just(4).map((Integer integer) -> String.valueOf(integer))
+
+                .subscribe(new SingleSubscriber<String>() {
+                    @Override
+                    public void onSuccess(String value) {
+                        mValueDisplay.setText(value);
+                    }
+
+                    @Override
+                    public void onError(Throwable error) {
+
+                    }
+                });
+ ``` 
+ 
+ 
   Libraries
 ---------
 The project is setup using:
