@@ -7,12 +7,12 @@ This is a example how to use RxJava and Retrolambda
   Java 8 introduced Lambdas Expressions, unfortunately Android does not support Java 8, so we are not able to take advantage of this with RxJava. Luckily there is a library called **[Retrolambda](https://github.com/orfjackal/retrolambda)** which backports lambdas to previous versions of Java. There is also a **[gradle plugin](https://github.com/evant/gradle-retrolambda)** for Retrolambda that will allow the use of lambdas in an Android application.
  
  In RxJava there are diferent elements:
-  * BASIC(Observable)
-  * ASYNCHRONOUS
-  * SINGLES
-  * SUBJECTS
-  * MAP
-  * DEBOUNCES
+  - BASIC(Observable)
+  - ASYNCHRONOUS
+  - SINGLES
+  - SUBJECTS
+  - MAP
+  - DEBOUNCES
   
   
   Basic
@@ -136,7 +136,7 @@ Single.just(4).map((Integer integer) -> String.valueOf(integer))
                     }
                 });
 ```        
-  Bringing it All Together
+  All Together with debounce
 ---------
   Everything together and a new concept: debounce. Let’s dive in. If you want to setup a PublishSubject such that it receives values the user types into a search box, fetches a list of suggestions based on that query, and then displays them. 
  ```java
