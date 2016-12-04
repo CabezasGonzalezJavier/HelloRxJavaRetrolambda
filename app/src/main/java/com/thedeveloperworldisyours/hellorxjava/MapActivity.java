@@ -24,22 +24,19 @@ public class MapActivity extends AppCompatActivity {
          * You can think of map as a function that takes in one value and outputs another value.
          * Usually there is some relationship between value put in to the map and the value that is output.
          */
-        Single.just(4).map(new Func1<Integer, String>() {
-            @Override
-            public String call(Integer integer) {
-                return String.valueOf(integer);
-            }
-        }).subscribe(new SingleSubscriber<String>() {
-            @Override
-            public void onSuccess(String value) {
-                mValueDisplay.setText(value);
-            }
+        Single.just(4).map((Integer integer) -> String.valueOf(integer))
 
-            @Override
-            public void onError(Throwable error) {
+                .subscribe(new SingleSubscriber<String>() {
+                    @Override
+                    public void onSuccess(String value) {
+                        mValueDisplay.setText(value);
+                    }
 
-            }
-        });
+                    @Override
+                    public void onError(Throwable error) {
+
+                    }
+                });
     }
 
     private void configureLayout() {

@@ -49,17 +49,8 @@ public class SinglesActivity extends AppCompatActivity {
      * onSuccess() and onError().
      */
     private void createSingle() {
-        Single<List<String>> tvShowSingle = Single.fromCallable(new Callable<List<String>>() {
-            @Override
-            public List<String> call() throws Exception {
-                /**
-                 * Uncomment me (and comment out the line below) to see what happens when an error occurs.
-                 *
-                 * return RestClient.getFavoriteTvShowsWithException();
-                 */
-                return mRestClient.getFavoriteTvShows();
-            }
-        });
+
+        Single<List<String>> tvShowSingle = Single.fromCallable(() -> mRestClient.getFavoriteTvShows());
 
         mTvShowSubscription = tvShowSingle
                 .subscribeOn(Schedulers.io())

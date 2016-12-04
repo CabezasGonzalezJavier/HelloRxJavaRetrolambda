@@ -17,7 +17,6 @@ import butterknife.BindView;
 import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import rx.subjects.PublishSubject;
 
@@ -52,12 +51,7 @@ public class TogetherActivity extends AppCompatActivity {
         mTextWatchSubscription = mSearchResultsSubject
                 .debounce(400, TimeUnit.MILLISECONDS)
                 .observeOn(Schedulers.io())
-                .map(new Func1<String, List<String>>() {
-                    @Override
-                    public List<String> call(String s) {
-                        return mRestClient.searchForCity(s);
-                    }
-                })
+                .map( (String string) -> mRestClient.searchForCity(string))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<String>>() {
                     @Override

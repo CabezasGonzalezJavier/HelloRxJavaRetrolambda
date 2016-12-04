@@ -48,13 +48,8 @@ public class AsynchronousActivity extends AppCompatActivity {
      * The creation code can be run on a different thread.
      */
     private void createObservable() {
-        Observable<List<String>> tvShowObservable = Observable.fromCallable(new Callable<List<String>>() {
-            @Override
-            public List<String> call() {
-                return mRestClient.getFavoriteTvShows();
-            }
-        });
 
+        Observable<List<String>> tvShowObservable = Observable.fromCallable(() -> mRestClient.getFavoriteTvShows());
         mTvShowSubscription = tvShowObservable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
