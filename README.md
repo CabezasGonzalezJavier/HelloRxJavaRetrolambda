@@ -6,7 +6,7 @@ This is a example how to use RxJava and Retrolambda
 
   Java 8 introduced Lambdas Expressions, unfortunately Android does not support Java 8, so we are not able to take advantage of this with RxJava. Luckily there is a library called **[Retrolambda](https://github.com/orfjackal/retrolambda)** which backports lambdas to previous versions of Java. There is also a **[gradle plugin](https://github.com/evant/gradle-retrolambda)** for Retrolambda that will allow the use of lambdas in an Android application.
  
- In this RxJava there are diferent elements:
+ In RxJava there are diferent elements:
   * BASIC(Observable)
   * ASYNCHRONOUS
   * SINGLES
