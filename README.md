@@ -14,7 +14,7 @@ This is a example how to use RxJava and Retrolambda
   - MAP
   - DEBOUNCES
   
-  
+  ```java  ```
   Basic
 ---------
   This method creates an Observable such that when an Observer subscribes, the onNext() of the Observer is immediately called with the argument provided to Observable.just(). The onCompleted() will then be called since the Observable has no other values to emit:
