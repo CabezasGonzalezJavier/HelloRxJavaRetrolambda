@@ -34,8 +34,6 @@ This is a example how to use RxJava and Retrolambda
                 mSimpleStringAdapter.setStrings(colors);
             }
     });
-view raw
-
 ```
 whit lambda:
 ```java  
