@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import rx.Observer;
+import butterknife.ButterKnife;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -22,13 +22,13 @@ import rx.subjects.PublishSubject;
 
 public class TogetherActivity extends AppCompatActivity {
 
-    @BindView(R.id.search_input)
+    @BindView(R.id.together_act_search_input)
     EditText mSearchInput;
 
-    @BindView(R.id.no_results_indicator)
+    @BindView(R.id.together_act_no_results_indicator)
     TextView mNoResultsIndicator;
 
-    @BindView(R.id.search_results)
+    @BindView(R.id.together_act_search_results)
     RecyclerView mSearchResults;
 
     private RestClient mRestClient;
@@ -53,22 +53,9 @@ public class TogetherActivity extends AppCompatActivity {
                 .observeOn(Schedulers.io())
                 .map( (String string) -> mRestClient.searchForCity(string))
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<String>>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(List<String> cities) {
-                        handleSearchResults(cities);
-                    }
-                });
+                .subscribe((List<String> cities) -> handleSearchResults(cities),
+                        (Throwable e) -> {},
+                        () -> {});
     }
 
     private void handleSearchResults(List<String> cities) {
@@ -111,6 +98,7 @@ public class TogetherActivity extends AppCompatActivity {
 
     private void configureLayout() {
         setContentView(R.layout.together_act);
+        ButterKnife.bind(this);
         mSearchResults.setLayoutManager(new LinearLayoutManager(this));
         mSearchResultsAdapter = new SimpleStringAdapter(this);
         mSearchResults.setAdapter(mSearchResultsAdapter);

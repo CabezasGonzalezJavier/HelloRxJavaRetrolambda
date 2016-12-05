@@ -35,24 +35,10 @@ public class BasicActivity extends AppCompatActivity {
     private void createObservable() {
         Observable<List<String>> listObservable = Observable.just(getColorList());
 
-        listObservable.subscribe(new Observer<List<String>>() {
-
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(List<String> colors) {
-                mSimpleStringAdapter.setStrings(colors);
-            }
-        });
-
+        listObservable.subscribe(
+                (List<String> colors)-> mSimpleStringAdapter.setStrings(colors),
+                (error) -> {},
+                () -> {});
     }
 
     private void configureLayout() {

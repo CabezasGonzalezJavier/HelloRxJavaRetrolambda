@@ -26,17 +26,8 @@ public class MapActivity extends AppCompatActivity {
          */
         Single.just(4).map((Integer integer) -> String.valueOf(integer))
 
-                .subscribe(new SingleSubscriber<String>() {
-                    @Override
-                    public void onSuccess(String value) {
-                        mValueDisplay.setText(value);
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-
-                    }
-                });
+                .subscribe((String value) -> mValueDisplay.setText(value),
+                        (Throwable error) -> {});
     }
 
     private void configureLayout() {

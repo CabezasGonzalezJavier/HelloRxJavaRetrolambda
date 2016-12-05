@@ -13,7 +13,7 @@ import rx.subjects.PublishSubject;
 public class SubjectsActivity extends AppCompatActivity {
 
     @BindView(R.id.subjects_act_counter_display)
-    private TextView mCounterDisplay;
+    public TextView mCounterDisplay;
 
     private PublishSubject<Integer> mCounterEmitter;
 
@@ -32,28 +32,15 @@ public class SubjectsActivity extends AppCompatActivity {
      */
     private void createCounterEmitter() {
         mCounterEmitter = PublishSubject.create();
-        mCounterEmitter.subscribe(new Observer<Integer>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(Integer integer) {
-                mCounterDisplay.setText(String.valueOf(integer));
-            }
-        });
+        mCounterEmitter.subscribe(
+                (Integer integer) ->  mCounterDisplay.setText(String.valueOf(integer)),
+                (Throwable e) ->{},
+                () -> { });
     }
 
     private void configureLayout() {
         setContentView(R.layout.subjects_act);
         configureCounterDisplay();
-        configureIncrementButton();
     }
 
     private void configureCounterDisplay() {
@@ -63,7 +50,7 @@ public class SubjectsActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.subjects_act_increment_button)
-    private void configureIncrementButton() {
+    public void configureIncrementButton() {
                 onIncrementButtonClick();
     }
 

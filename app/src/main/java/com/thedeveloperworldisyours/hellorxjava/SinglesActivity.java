@@ -22,13 +22,13 @@ import rx.schedulers.Schedulers;
 public class SinglesActivity extends AppCompatActivity {
 
     @BindView(R.id.singles_act_tv_show_list)
-    private RecyclerView mTvShowListView;
+    public RecyclerView mTvShowListView;
 
     @BindView(R.id.singles_act_loader)
-    private ProgressBar mProgressBar;
+    public ProgressBar mProgressBar;
 
     @BindView(R.id.singles_act_error_message)
-    private TextView mErrorMessage;
+    public TextView mErrorMessage;
 
     private Subscription mTvShowSubscription;
     private SimpleStringAdapter mSimpleStringAdapter;
@@ -55,17 +55,8 @@ public class SinglesActivity extends AppCompatActivity {
         mTvShowSubscription = tvShowSingle
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleSubscriber<List<String>>() {
-                    @Override
-                    public void onSuccess(List<String> tvShows) {
-                        displayTvShows(tvShows);
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-                        displayErrorMessage();
-                    }
-                });
+                .subscribe((List<String> tvShows) -> displayTvShows(tvShows),
+                    (Throwable error) ->  displayErrorMessage());
     }
 
     @Override
