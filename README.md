@@ -3,7 +3,7 @@ This is a example how to use RxJava and Retrolambda
 <p align="center">
     <img src="https://github.com/CabezasGonzalezJavier/HelloRxJavaRetrolambda/blob/master/helloRxJavaRetrolambda.jpg" alt="Web Launcher"/>
 </p>
-
+* **[You can see, this post in The Developer world is yours](http://thedeveloperworldisyours.com/android/rxjava-retrolambda/#sthash.e4rHACNL.dpbs)**
   Java 8 introduced Lambdas Expressions, unfortunately Android does not support Java 8, so we are not able to take advantage of this with RxJava. Luckily there is a library called **[Retrolambda](https://github.com/orfjackal/retrolambda)** which backports lambdas to previous versions of Java. There is also a **[gradle plugin](https://github.com/evant/gradle-retrolambda)** for Retrolambda that will allow the use of lambdas in an Android application.
  
  In RxJava there are different elements:
@@ -21,7 +21,7 @@ This is a example how to use RxJava and Retrolambda
 ```java  
     Observable<List<String>> listObservable = Observable.just(getColorList());
 
-        listObservable.subscribe(new Observer<List<String>>() { 
+    listObservable.subscribe(new Observer<List<String>>() { 
 
             @Override 
             public void onCompleted() { } 
@@ -256,6 +256,7 @@ The project is setup using:
   * **[part 1](https://medium.com/@kurtisnusbaum/rxandroid-basics-part-1-c0d5edcf6850#.4zr72tozz)** by Kurtis Nusbaum
   * **[part 2](https://medium.com/@kurtisnusbaum/rxandroid-basics-part-2-6e877af352#.wpvo34c77)** by Kurtis Nusbaum
   * **[rxandroidexamples](https://github.com/klnusbaum/rxandroidexamples)**  by Kurtis Nusbaum
+  * **[The Developer world is yours](http://thedeveloperworldisyours.com/android/rxjava-retrolambda/#sthash.e4rHACNL.dpbs)** 
 
 # Requirements
 
