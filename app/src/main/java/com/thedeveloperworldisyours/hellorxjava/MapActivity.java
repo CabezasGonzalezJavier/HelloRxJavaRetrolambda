@@ -7,8 +7,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Single;
-import rx.SingleSubscriber;
-import rx.functions.Func1;
 
 public class MapActivity extends AppCompatActivity {
 

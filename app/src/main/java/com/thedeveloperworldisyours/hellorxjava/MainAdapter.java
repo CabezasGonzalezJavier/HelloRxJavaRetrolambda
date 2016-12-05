@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,42 +28,37 @@ public class MainAdapter extends RecyclerView.Adapter<SimpleStringAdapter.ViewHo
     public SimpleStringAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.string_list_item, parent, false);
 
-        SimpleStringAdapter.ViewHolder dataObjectHolder = new SimpleStringAdapter.ViewHolder(view);
-
-        return dataObjectHolder;
+        return new SimpleStringAdapter.ViewHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(SimpleStringAdapter.ViewHolder holder, final int position) {
         holder.mColorDisplay.setText(mStrings.get(position));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.itemView.setOnClickListener((View v) -> {
 
-                Intent intent = new Intent(mContext, BasicActivity.class);
-                switch (position) {
-                    case 0:
-                        intent = new Intent(mContext, BasicActivity.class);
-                        break;
-                    case 1:
-                        intent = new Intent(mContext, AsynchronousActivity.class);
-                        break;
-                    case 2:
-                        intent = new Intent(mContext, SinglesActivity.class);
-                        break;
-                    case 3:
-                        intent = new Intent(mContext, SubjectsActivity.class);
-                        break;
-                    case 4:
-                        intent = new Intent(mContext, MapActivity.class);
-                        break;
-                    case 5:
-                        intent = new Intent(mContext, TogetherActivity.class);
-                        break;
-                }
-                mContext.startActivity(intent);
+            Intent intent = new Intent(mContext, BasicActivity.class);
+            switch (position) {
+                case 0:
+                    intent = new Intent(mContext, BasicActivity.class);
+                    break;
+                case 1:
+                    intent = new Intent(mContext, AsynchronousActivity.class);
+                    break;
+                case 2:
+                    intent = new Intent(mContext, SinglesActivity.class);
+                    break;
+                case 3:
+                    intent = new Intent(mContext, SubjectsActivity.class);
+                    break;
+                case 4:
+                    intent = new Intent(mContext, MapActivity.class);
+                    break;
+                case 5:
+                    intent = new Intent(mContext, TogetherActivity.class);
+                    break;
             }
+            mContext.startActivity(intent);
         });
     }
 

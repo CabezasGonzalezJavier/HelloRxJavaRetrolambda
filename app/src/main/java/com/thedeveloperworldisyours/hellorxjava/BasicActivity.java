@@ -10,7 +10,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import rx.Observable;
-import rx.Observer;
 
 public class BasicActivity extends AppCompatActivity {
 

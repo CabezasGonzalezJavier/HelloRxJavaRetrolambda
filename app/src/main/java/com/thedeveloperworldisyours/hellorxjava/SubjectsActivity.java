@@ -7,7 +7,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Observer;
 import rx.subjects.PublishSubject;
 
 public class SubjectsActivity extends AppCompatActivity {
