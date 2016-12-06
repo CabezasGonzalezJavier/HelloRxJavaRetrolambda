@@ -28,6 +28,8 @@ android {
 
 dependencies {
 
+    compile 'com.android.support:support-v4:24.2.1'
+    testCompile 'junit:junit:4.12'
     // App's dependencies, including test
     compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"

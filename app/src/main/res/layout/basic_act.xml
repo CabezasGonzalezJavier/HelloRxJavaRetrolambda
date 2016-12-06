@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_act_root"
+    android:id="@+id/basic_act_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.thedeveloperworldisyours.hellorxjava.BasicActivity">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_act_color_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-</RelativeLayout>
+    tools:context="com.thedeveloperworldisyours.hellorxjava.simple.basic.BasicActivity"/>

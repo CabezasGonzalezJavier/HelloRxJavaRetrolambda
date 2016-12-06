@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.hellorxjava;
+package com.thedeveloperworldisyours.hellorxjava.simple;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +9,10 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.thedeveloperworldisyours.hellorxjava.R;
+import com.thedeveloperworldisyours.hellorxjava.Utils.RestClient;
+import com.thedeveloperworldisyours.hellorxjava.Utils.SimpleStringAdapter;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

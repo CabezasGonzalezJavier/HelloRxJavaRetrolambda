@@ -8,19 +8,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BasicActivity" />
-        <activity android:name=".AsynchronousActivity" />
-        <activity android:name=".SinglesActivity" />
-        <activity android:name=".SubjectsActivity" />
-        <activity android:name=".MapActivity" />
-        <activity android:name=".TogetherActivity"></activity>
+        <activity android:name=".simple.basic.BasicActivity" />
+        <activity android:name=".simple.asynchronous.AsynchronousActivity" />
+        <activity android:name=".simple.singles.SinglesActivity" />
+        <activity android:name=".simple.subjects.SubjectsActivity" />
+        <activity android:name=".simple.map.MapActivity" />
+        <activity android:name=".simple.TogetherActivity"></activity>
     </application>
 
 </manifest>

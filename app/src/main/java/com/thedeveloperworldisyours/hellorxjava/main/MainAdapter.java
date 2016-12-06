@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.hellorxjava;
+package com.thedeveloperworldisyours.hellorxjava.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.thedeveloperworldisyours.hellorxjava.R;
+import com.thedeveloperworldisyours.hellorxjava.Utils.SimpleStringAdapter;
+import com.thedeveloperworldisyours.hellorxjava.simple.asynchronous.AsynchronousActivity;
+import com.thedeveloperworldisyours.hellorxjava.simple.basic.BasicActivity;
+import com.thedeveloperworldisyours.hellorxjava.simple.map.MapActivity;
+import com.thedeveloperworldisyours.hellorxjava.simple.singles.SinglesActivity;
+import com.thedeveloperworldisyours.hellorxjava.simple.subjects.SubjectsActivity;
+import com.thedeveloperworldisyours.hellorxjava.simple.TogetherActivity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,11 @@
-package com.thedeveloperworldisyours.hellorxjava;
+package com.thedeveloperworldisyours.hellorxjava.Utils;
 
 /**
  * Created by javierg on 02/12/2016.
  */
 import android.content.Context;
+
+import com.thedeveloperworldisyours.hellorxjava.R;
 
 import java.util.ArrayList;
 import java.util.List;

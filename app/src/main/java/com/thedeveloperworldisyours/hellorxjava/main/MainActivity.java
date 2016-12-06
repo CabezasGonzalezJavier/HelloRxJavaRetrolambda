@@ -1,9 +1,11 @@
-package com.thedeveloperworldisyours.hellorxjava;
+package com.thedeveloperworldisyours.hellorxjava.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.thedeveloperworldisyours.hellorxjava.R;
 
 import java.util.ArrayList;
 import java.util.List;
