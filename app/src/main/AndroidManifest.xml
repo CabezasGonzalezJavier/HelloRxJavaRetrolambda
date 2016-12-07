@@ -20,7 +20,11 @@
         <activity android:name=".simple.singles.SinglesActivity" />
         <activity android:name=".simple.subjects.SubjectsActivity" />
         <activity android:name=".simple.map.MapActivity" />
-        <activity android:name=".simple.together.TogetherActivity"></activity>
+        <activity android:name=".simple.together.TogetherActivity" />
+        <activity
+            android:name=".complex.ZipActivity"
+            android:label="@string/title_activity_zip"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 24
@@ -62,4 +64,13 @@ dependencies {
     // Butter Knife
     compile "com.jakewharton:butterknife:$rootProject.butterKnife"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnife"
+
+    // GSON library for comparison
+    compile 'com.google.code.gson:gson:2.4'
+
+    // Retrofit
+    compile "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
+    compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofit"
+    compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofit"
+
 }
