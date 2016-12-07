@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/together_act_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
-
-    <EditText
-        android:id="@+id/together_act_search_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="@string/together_act_search_hint"
-        android:padding="16dp"
-        android:background="@drawable/together_act_search_background"
-        android:textSize="16sp" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/together_act_search_results"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/together_act_search_input"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/together_act_no_results_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textColor="@android:color/white"
-        android:text="@string/together_act_no_results"
-        android:textSize="20sp"/>
-
-</RelativeLayout>
+    android:background="@color/colorPrimaryDark" />

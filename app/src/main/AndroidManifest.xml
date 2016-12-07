@@ -20,7 +20,7 @@
         <activity android:name=".simple.singles.SinglesActivity" />
         <activity android:name=".simple.subjects.SubjectsActivity" />
         <activity android:name=".simple.map.MapActivity" />
-        <activity android:name=".simple.TogetherActivity"></activity>
+        <activity android:name=".simple.together.TogetherActivity"></activity>
     </application>
 
 </manifest>

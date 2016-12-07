@@ -14,7 +14,7 @@ import com.thedeveloperworldisyours.hellorxjava.simple.basic.BasicActivity;
 import com.thedeveloperworldisyours.hellorxjava.simple.map.MapActivity;
 import com.thedeveloperworldisyours.hellorxjava.simple.singles.SinglesActivity;
 import com.thedeveloperworldisyours.hellorxjava.simple.subjects.SubjectsActivity;
-import com.thedeveloperworldisyours.hellorxjava.simple.TogetherActivity;
+import com.thedeveloperworldisyours.hellorxjava.simple.together.TogetherActivity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.thedeveloperworldisyours.hellorxjava.simple.together.TogetherFragment">
+
+    <EditText
+        android:id="@+id/together_frag_search_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="@string/together_act_search_hint"
+        android:padding="16dp"
+        android:background="@drawable/together_act_search_background"
+        android:textSize="16sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/together_frag_search_results"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/together_frag_search_input"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/together_frag_no_results_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@android:color/white"
+        android:text="@string/together_act_no_results"
+        android:textSize="20sp"/>
+
+</RelativeLayout>
