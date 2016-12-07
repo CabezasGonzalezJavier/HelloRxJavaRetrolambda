@@ -7,6 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -19,6 +20,7 @@ public class ZipPresenter implements ZipContract.Presenter {
     public ZipContract.View mView;
 
     public Observable<UserAndEvents> mCombined;
+    private Subscription mSubscription;
 
     public ZipPresenter(ZipContract.View view) {
         this.mView = view;
@@ -49,30 +51,25 @@ public class ZipPresenter implements ZipContract.Presenter {
         mCombined = Observable.zip(userObservable, eventsObservable, (JsonObject jsonObject, JsonArray jsonElements) -> {
             return new UserAndEvents(jsonObject, jsonElements);
         });
-    }
+        mSubscription = mCombined.subscribe((UserAndEvents o) ->
+                        mView.show(o)
+                ,
 
-    @Override
-    public void finishCall() {
-        mCombined.subscribe((UserAndEvents o) -> {
-            mView.show(o);
-                },
-
-                (Throwable e) -> {
-
-                },
+                (Throwable e) ->
+                        mView.showError()
+                ,
                 () -> {
-
 
                 });
     }
 
     @Override
     public void subscribe() {
-
+        call();
     }
 
     @Override
     public void unsubscribe() {
-
+        mSubscription.unsubscribe();
     }
 }

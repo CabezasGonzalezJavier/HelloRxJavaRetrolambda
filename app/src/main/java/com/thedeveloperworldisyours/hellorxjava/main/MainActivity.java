@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         list.add(4, "Map");
         list.add(5, "Together");
+        list.add(6, "Zip");
 
         return list;
     }

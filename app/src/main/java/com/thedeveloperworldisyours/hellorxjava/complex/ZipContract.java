@@ -11,11 +11,11 @@ public class ZipContract {
 
     public interface View extends BaseView<Presenter> {
         void show(UserAndEvents o);
+        void showError();
     }
 
     public interface Presenter extends BasePresenter {
         void call();
 
-        void finishCall();
     }
 }
