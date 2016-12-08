@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.hellorxjava.complex;
+package com.thedeveloperworldisyours.hellorxjava.complex.zip;
 
 import com.google.gson.JsonArray;
 
@@ -10,7 +10,7 @@ import rx.Observable;
  * Created by javierg on 07/12/2016.
  */
 
-public interface GitHubEvents {
+public interface EventsService {
     @GET("users/{user}/events")
     Observable<JsonArray> listEvents(@Path("user") String user);
 }

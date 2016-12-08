@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.hellorxjava.complex;
+package com.thedeveloperworldisyours.hellorxjava.complex.zip;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.hellorxjava.complex;
+package com.thedeveloperworldisyours.hellorxjava.complex.zip;
 
 import com.thedeveloperworldisyours.hellorxjava.BasePresenter;
 import com.thedeveloperworldisyours.hellorxjava.BaseView;
@@ -10,7 +10,7 @@ import com.thedeveloperworldisyours.hellorxjava.BaseView;
 public class ZipContract {
 
     public interface View extends BaseView<Presenter> {
-        void show(UserAndEvents o);
+        void show(String string);
         void showError();
     }
 

@@ -45,8 +45,9 @@ public class MainActivity extends AppCompatActivity {
         list.add(3, "Subjects");
 
         list.add(4, "Map");
-        list.add(5, "Together");
+        list.add(5, "debonce");
         list.add(6, "Zip");
+        list.add(7, "retrofit");
 
         return list;
     }

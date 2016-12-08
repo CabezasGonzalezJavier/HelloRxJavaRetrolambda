@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.hellorxjava.complex;
+package com.thedeveloperworldisyours.hellorxjava.complex.zip;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -47,9 +47,9 @@ public class ZipFragment extends Fragment implements ZipContract.View {
     }
 
     @Override
-    public void show(UserAndEvents o) {
+    public void show(String string) {
         mProgressBar.setVisibility(View.GONE);
-        Snackbar.make(mView, o.toString(), Snackbar.LENGTH_LONG).show();
+        Snackbar.make(mView, string, Snackbar.LENGTH_LONG).show();
     }
 
     @Override

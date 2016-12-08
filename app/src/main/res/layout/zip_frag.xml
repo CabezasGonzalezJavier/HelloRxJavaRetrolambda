@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.thedeveloperworldisyours.hellorxjava.complex.ZipFragment">
+    tools:context="com.thedeveloperworldisyours.hellorxjava.complex.zip.ZipFragment">
     <ProgressBar
         android:id="@+id/zip_frag_loader"
         android:layout_width="wrap_content"

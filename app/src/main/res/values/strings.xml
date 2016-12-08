@@ -4,6 +4,11 @@
     <string name="subjects_act_increment">Increment</string>
     <string name="together_act_no_results">No Results Found</string>
     <string name="together_act_search_hint">Type City Name Here</string>
+
+    <string name="retrofit_frag_clear">Clear</string>
+    <string name="retrofit_frag_fetch">Fetch</string>
+    <string name="retrofit_no_data">No data</string>
+
     <string-array name="city_list">
         <item>Aberdeen</item>
         <item>Abilene</item>

@@ -1,7 +1,9 @@
-package com.thedeveloperworldisyours.hellorxjava.complex;
+package com.thedeveloperworldisyours.hellorxjava.complex.zip;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.thedeveloperworldisyours.hellorxjava.complex.User;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -36,13 +38,13 @@ public class ZipPresenter implements ZipContract.Presenter {
                 .build();
 
         Observable<JsonObject> userObservable = repo
-                .create(GitHubUser.class)
+                .create(UserService.class)
                 .getUser("Cabezas")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
 
         Observable<JsonArray> eventsObservable = repo
-                .create(GitHubEvents.class)
+                .create(EventsService.class)
                 .listEvents("Cabezas")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -51,9 +53,11 @@ public class ZipPresenter implements ZipContract.Presenter {
         mCombined = Observable.zip(userObservable, eventsObservable, (JsonObject jsonObject, JsonArray jsonElements) -> {
             return new UserAndEvents(jsonObject, jsonElements);
         });
-        mSubscription = mCombined.subscribe((UserAndEvents o) ->
-                        mView.show(o)
-                ,
+        mSubscription = mCombined.subscribe((UserAndEvents o) -> {
+                    Gson gson = new Gson();
+                    User user = gson.fromJson(o.user.toString(), User.class);
+                    mView.show(user.getEventsUrl());
+                },
 
                 (Throwable e) ->
                         mView.showError()

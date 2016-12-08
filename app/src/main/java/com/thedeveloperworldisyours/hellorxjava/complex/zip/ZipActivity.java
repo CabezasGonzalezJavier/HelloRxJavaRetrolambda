@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.hellorxjava.complex;
+package com.thedeveloperworldisyours.hellorxjava.complex.zip;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

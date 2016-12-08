@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.thedeveloperworldisyours.hellorxjava">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +23,8 @@
         <activity android:name=".simple.subjects.SubjectsActivity" />
         <activity android:name=".simple.map.MapActivity" />
         <activity android:name=".simple.together.TogetherActivity" />
-        <activity android:name=".complex.ZipActivity"/>
+        <activity android:name=".complex.zip.ZipActivity" />
+        <activity android:name=".complex.rxjavaretrofit.RetrofitActivity"/>
     </application>
 
 </manifest>
