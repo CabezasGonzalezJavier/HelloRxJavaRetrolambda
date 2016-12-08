@@ -3,13 +3,17 @@ This is a example how to use RxJava and Retrolambda
 Libraries
 ---------
 The project is setup using:
+<pre>
  * **[Butter Knife](https://github.com/JakeWharton/butterknife)**
  * **[RxJava](https://github.com/ReactiveX/RxJava)**
  * **[RxAndroid](https://github.com/ReactiveX/RxAndroid)**
+ * **[RxBinding](https://github.com/JakeWharton/RxBinding)**
  * **[Retrolambda](https://github.com/orfjackal/retrolambda)**
  * **[gradle plugin](https://github.com/evant/gradle-retrolambda)**
  * **[Retrofit](https://github.com/square/retrofit)**
  * **[GSON](https://github.com/google/gson)**
+ * **[Guava (checking null)](https://github.com/google/guava)**
+ </pre>
 <p align="center">
     <img src="https://github.com/CabezasGonzalezJavier/HelloRxJavaRetrolambda/blob/master/helloRxJavaRetrolambda.jpg" alt="Web Launcher"/>
 </p>
