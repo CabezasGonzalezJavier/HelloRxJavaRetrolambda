@@ -3,10 +3,11 @@ This is a example how to use RxJava and Retrolambda
 * **[Android architecture](https://github.com/googlesamples/android-architecture)**
 Each feature has:
 
-A contract defining the view and the presenter
-An Activity which is responsible for the creation of fragments and presenters
-A Fragment which implements the view interface.
-A presenter which implements the presenter interface
+* A contract defining the view and the presenter.
+* An Activity which is responsible for the creation of fragments and presenters
+* A Fragment which implements the view interface.
+* A presenter which implements the presenter interface.
+
 In general, the business logic lives in the presenter and relies on the view to do the Android UI work.
 
 The view contains almost no logic: it converts the presenter's commands to UI actions and listens to user actions, which are passed to the presenter.
