@@ -284,9 +284,10 @@ with lambda:
 # Further reading
 
   As the above only gives a rough overview of rxjava example I'd strongly recommend checking out the following:
+  * **[RXJava Documentation](http://reactivex.io/documentation/operators.html#combining)**
   * **[part 1](https://medium.com/@kurtisnusbaum/rxandroid-basics-part-1-c0d5edcf6850#.4zr72tozz)** by Kurtis Nusbaum
   * **[part 2](https://medium.com/@kurtisnusbaum/rxandroid-basics-part-2-6e877af352#.wpvo34c77)** by Kurtis Nusbaum
-  * **[rxandroidexamples](https://github.com/klnusbaum/rxandroidexamples)**  by Kurtis Nusbaum
+  * **[retrofit-rxjava](http://randomdotnext.com/retrofit-rxjava)**  by Kai
   * **[The Developer world is yours](http://thedeveloperworldisyours.com/android/rxjava-retrolambda/#sthash.e4rHACNL.dpbs)** 
 
 # Requirements
