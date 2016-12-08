@@ -1,5 +1,20 @@
 # HelloRxJavaRetrolambda
 This is a example how to use RxJava and Retrolambda
+* **[Android architecture](https://github.com/googlesamples/android-architecture)**
+Each feature has:
+
+A contract defining the view and the presenter
+An Activity which is responsible for the creation of fragments and presenters
+A Fragment which implements the view interface.
+A presenter which implements the presenter interface
+In general, the business logic lives in the presenter and relies on the view to do the Android UI work.
+
+The view contains almost no logic: it converts the presenter's commands to UI actions and listens to user actions, which are passed to the presenter.
+
+Contracts are interfaces used to define the connection between views and presenters.
+
+
+
 Libraries
 ---------
 The project is setup using:
@@ -13,8 +28,8 @@ The project is setup using:
  * **[Retrofit](https://github.com/square/retrofit)**
  * **[GSON](https://github.com/google/gson)**
  * **[Guava (checking null)](https://github.com/google/guava)**
- <pre>
- </pre>
+ 
+ 
 <p align="center">
     <img src="https://github.com/CabezasGonzalezJavier/HelloRxJavaRetrolambda/blob/master/helloRxJavaRetrolambda.jpg" alt="Web Launcher"/>
 </p>
