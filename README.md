@@ -1,6 +1,11 @@
 # HelloRxJavaRetrolambda
-This is a example how to use RxJava and Retrolambda
+This is a example how to use RxJava and Retrolambda.
+
+A simple implementation of the Model-View-Presenter pattern with no architectural frameworks.
+
 * **[Android architecture](https://github.com/googlesamples/android-architecture)**
+
+
 Each feature has:
 
 * A contract defining the view and the presenter.
