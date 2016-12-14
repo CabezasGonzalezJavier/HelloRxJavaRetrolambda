@@ -45,13 +45,21 @@ The project is setup using:
  
  In RxJava there are different elements:
  <pre>
+ Simple
     1.BASIC(Observable)
     2.ASYNCHRONOUS
     3.SINGLES
     4.SUBJECTS
     5.MAP
     6.DEBOUNCES
+ Complex
+    7.Flat Map
+    8.Concat Map
+    
 </pre>
+
+# Simple
+
   Basic
 ---------
   This method creates an Observable such that when an Observer subscribes, the onNext() of the Observer is immediately called with the argument provided to Observable.just(). The onCompleted() will then be called since the Observable has no other values to emit:
@@ -278,9 +286,68 @@ with lambda:
                         (Throwable e) -> {},
                         () -> {});
 ```
- 
-  
 
+# Complex
+
+We have an Observable emitting a set of Integers and we want to calculate the square of each of those values:
+
+```java
+public class DataManager {
+    private final Executor jobExecutor;
+    public DataManager() {
+     this.numbers = new ArrayList<>(Arrays.asList(2, 3, 4, 5, 6, 7, 8, 9, 10));
+     jobExecutor = JobExecutor.getInstance();
+    }
+ 
+    public Observable<Integer> getNumbers() {
+     return Observable.from(numbers);
+    }
+ 
+    public List<Integer> getNumbersSync() {
+     return this.numbers;
+    }
+    
+    public Observable<Integer> squareOfAsync(int number) {
+        return Observable.just(number * number).subscribeOn(Schedulers.from(jobExecutor));
+    }
+}
+```
+
+ Concat Map
+ ---------
+  It's a operator that operate on the entire sequence of items emitted by an Observable, emit the emissions from two or more Observables without interleaving them
+ ```java
+ .concatMap(new Function<Integer, ObservableSource<Integer>>() {
+                    @Override
+                    public ObservableSource<Integer> apply(Integer integer) throws Exception {
+                        return mDataManager.squareOfAsync(integer);
+                    }
+                })
+  ```
+  with :: operator
+  ```java
+  .concatMap(mDataManager::squareOfAsync)
+  ```
+  
+  Flat Map
+  ---------
+  The flatMap() method creates a new Observable by applying a function that you supply to each item emitted by the original Observable, where that function is itself an Observable that emits items, and then merges the results of that function applied to every item emitted by the original Observable, emitting these merged results.
+  
+ ```java
+ .flatMap(new Function<Integer, ObservableSource<Integer>>() {
+                    @Override
+                    public ObservableSource<Integer> apply(Integer integer) throws Exception {
+                        return mDataManager.squareOfAsync(integer);
+                    }
+                })
+  ```
+with :: operator
+  ```java
+  .flatMap(mDataManager::squareOfAsync)
+  ```
+  flatMap() uses merge operator while concatMap() uses concat operator meaning that the last one cares about the order of the elements
+  
+  
 # Further reading
 
   As the above only gives a rough overview of rxjava example I'd strongly recommend checking out the following:
@@ -288,6 +355,7 @@ with lambda:
   * **[part 1](https://medium.com/@kurtisnusbaum/rxandroid-basics-part-1-c0d5edcf6850#.4zr72tozz)** by Kurtis Nusbaum
   * **[part 2](https://medium.com/@kurtisnusbaum/rxandroid-basics-part-2-6e877af352#.wpvo34c77)** by Kurtis Nusbaum
   * **[retrofit-rxjava](http://randomdotnext.com/retrofit-rxjava)**  by Kai
+  * **[concatMap() vs flatMap()](http://fernandocejas.com/2015/01/11/rxjava-observable-tranformation-concatmap-vs-flatmap/)** by Fernando Cejas
   * **[The Developer world is yours](http://thedeveloperworldisyours.com/android/rxjava-retrolambda/#sthash.e4rHACNL.dpbs)** 
 
 # Requirements
