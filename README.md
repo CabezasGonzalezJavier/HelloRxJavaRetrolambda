@@ -1,5 +1,5 @@
 # HelloRxJavaRetrolambda
-This is a example how to use RxJava and Retrolambda.
+This is a example how to use RxJava 2 and Retrolambda.
 
 A simple implementation of the Model-View-Presenter pattern with no architectural frameworks.
 
@@ -26,9 +26,8 @@ Libraries
 The project is setup using:
 
  * **[Butter Knife](https://github.com/JakeWharton/butterknife)**
- * **[RxJava](https://github.com/ReactiveX/RxJava)**
+ * **[RxJava 2](https://github.com/ReactiveX/RxJava)**
  * **[RxAndroid](https://github.com/ReactiveX/RxAndroid)**
- * **[RxBinding](https://github.com/JakeWharton/RxBinding)**
  * **[Retrolambda](https://github.com/orfjackal/retrolambda)**
  * **[gradle plugin](https://github.com/evant/gradle-retrolambda)**
  * **[Retrofit](https://github.com/square/retrofit)**
@@ -55,6 +54,7 @@ The project is setup using:
  Complex
     7.Flat Map
     8.Concat Map
+    9.Retrofit with RxJava 2
     
 </pre>
 
