@@ -313,8 +313,9 @@ public class DataManager {
 }
 ```
 
- Concat Map
- ---------
+ 
+  Concat Map
+---------
   It's a operator that operate on the entire sequence of items emitted by an Observable, emit the emissions from two or more Observables without interleaving them
  ```java
  .concatMap(new Function<Integer, ObservableSource<Integer>>() {
@@ -329,8 +330,9 @@ public class DataManager {
   .concatMap(mDataManager::squareOfAsync)
   ```
   
+  
   Flat Map
-  ---------
+---------
   The flatMap() method creates a new Observable by applying a function that you supply to each item emitted by the original Observable, where that function is itself an Observable that emits items, and then merges the results of that function applied to every item emitted by the original Observable, emitting these merged results.
   
  ```java
