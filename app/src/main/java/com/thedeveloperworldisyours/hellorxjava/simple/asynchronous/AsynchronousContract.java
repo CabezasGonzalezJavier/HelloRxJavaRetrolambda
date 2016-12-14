@@ -13,6 +13,8 @@ public class AsynchronousContract {
 
     public interface View extends BaseView<Presenter> {
         void displayTvShows(List<String> tvShows);
+
+        void errorTvShows();
     }
 
     interface Presenter extends BasePresenter {

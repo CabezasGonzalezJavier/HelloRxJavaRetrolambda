@@ -3,6 +3,7 @@ package com.thedeveloperworldisyours.hellorxjava.complex.rxjavaretrofit;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.thedeveloperworldisyours.hellorxjava.Injection;
 import com.thedeveloperworldisyours.hellorxjava.R;
 import com.thedeveloperworldisyours.hellorxjava.Utils.ActivityUtils;
 
@@ -20,7 +21,7 @@ public class RetrofitActivity extends AppCompatActivity {
 
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), retrofitFragment, R.id.retrofit_act_container);
 
-        new RetrofitPresenter(retrofitFragment);
+        new RetrofitPresenter(retrofitFragment, Injection.provideSchedulerProvider());
 
     }
 }

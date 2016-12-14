@@ -2,6 +2,7 @@ package com.thedeveloperworldisyours.hellorxjava.complex.rxjavaretrofit;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.percent.PercentRelativeLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,8 +13,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.thedeveloperworldisyours.hellorxjava.R;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +32,9 @@ public class RetrofitFragment extends Fragment implements RetrofitContract.View 
 
     @BindView(R.id.retrofit_frag_no_data)
     TextView mNoData;
+
+    @BindView(R.id.retrofit_frag_container)
+    PercentRelativeLayout mContainer;
 
     View mView;
 
@@ -61,7 +63,6 @@ public class RetrofitFragment extends Fragment implements RetrofitContract.View 
 
     @Override
     public void configureLayout() {
-
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRetrofitAdapter = new RetrofitAdapter();
         mRecyclerView.setAdapter(mRetrofitAdapter);

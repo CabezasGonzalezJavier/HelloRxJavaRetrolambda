@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.thedeveloperworldisyours.hellorxjava.R;
 import com.thedeveloperworldisyours.hellorxjava.Utils.SimpleStringAdapter;
+import com.thedeveloperworldisyours.hellorxjava.complex.flatmap.FlatMapActivity;
 import com.thedeveloperworldisyours.hellorxjava.complex.rxjavaretrofit.RetrofitActivity;
 import com.thedeveloperworldisyours.hellorxjava.complex.zip.ZipActivity;
 import com.thedeveloperworldisyours.hellorxjava.simple.asynchronous.AsynchronousActivity;
@@ -73,6 +74,9 @@ public class MainAdapter extends RecyclerView.Adapter<SimpleStringAdapter.ViewHo
                     break;
                 case 7:
                     intent = new Intent(mContext, RetrofitActivity.class);
+                    break;
+                case 8:
+                    intent = new Intent(mContext, FlatMapActivity.class);
                     break;
             }
             mContext.startActivity(intent);

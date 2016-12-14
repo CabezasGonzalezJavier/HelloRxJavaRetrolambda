@@ -4,6 +4,7 @@ package com.thedeveloperworldisyours.hellorxjava.simple.asynchronous;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.thedeveloperworldisyours.hellorxjava.Injection;
 import com.thedeveloperworldisyours.hellorxjava.R;
 import com.thedeveloperworldisyours.hellorxjava.Utils.RestClient;
 import com.thedeveloperworldisyours.hellorxjava.Utils.ActivityUtils;
@@ -25,7 +26,7 @@ public class AsynchronousActivity extends AppCompatActivity {
 
         RestClient restClient = new RestClient(this);
 
-        new AsynchronousPresenter(restClient, asynchronousFragment);
+        new AsynchronousPresenter(restClient, Injection.provideSchedulerProvider(), asynchronousFragment);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.thedeveloperworldisyours.hellorxjava.simple.asynchronous;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +29,8 @@ public class AsynchronousFragment extends Fragment implements AsynchronousContra
     AsynchronousContract.Presenter mPresenter;
     private SimpleStringAdapter mSimpleStringAdapter;
 
+    View mView;
+
     public AsynchronousFragment() {
         // Required empty public constructor
     }
@@ -45,10 +48,10 @@ public class AsynchronousFragment extends Fragment implements AsynchronousContra
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.asynchronous_frag, container, false);
-        ButterKnife.bind(this, view);
+        mView = inflater.inflate(R.layout.asynchronous_frag, container, false);
+        ButterKnife.bind(this, mView);
         configureLayout();
-        return view;
+        return mView;
     }
 
     private void configureLayout() {
@@ -64,6 +67,11 @@ public class AsynchronousFragment extends Fragment implements AsynchronousContra
         mProgressBar.setVisibility(View.GONE);
         mTvShowListView.setVisibility(View.VISIBLE);
 
+    }
+
+    @Override
+    public void errorTvShows() {
+        Snackbar.make(mView, "error", Snackbar.LENGTH_LONG).show();
     }
 
     @Override

@@ -3,7 +3,8 @@ package com.thedeveloperworldisyours.hellorxjava.simple.basic;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
+import io.reactivex.Observable;
+
 
 /**
  * Created by javierg on 06/12/2016.

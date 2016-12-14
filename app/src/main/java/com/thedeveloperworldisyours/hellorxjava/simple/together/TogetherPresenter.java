@@ -5,10 +5,10 @@ import com.thedeveloperworldisyours.hellorxjava.Utils.RestClient;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subjects.PublishSubject;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.PublishSubject;
+
 
 /**
  * Created by javierg on 07/12/2016.
@@ -17,7 +17,6 @@ import rx.subjects.PublishSubject;
 public class TogetherPresenter implements TogetherContract.Presenter {
 
     private PublishSubject<String> mSearchResultsSubject;
-    private Subscription mTextWatchSubscription;
     private TogetherContract.View mView;
     private RestClient mRestClient;
 
@@ -31,7 +30,7 @@ public class TogetherPresenter implements TogetherContract.Presenter {
     @Override
     public void createObservables() {
         mSearchResultsSubject = PublishSubject.create();
-        mTextWatchSubscription = mSearchResultsSubject
+        mSearchResultsSubject
                 .debounce(400, TimeUnit.MILLISECONDS)
                 .observeOn(Schedulers.io())
                 .map((String string) -> mRestClient.searchForCity(string))
@@ -64,6 +63,5 @@ public class TogetherPresenter implements TogetherContract.Presenter {
 
     @Override
     public void unsubscribe() {
-        mTextWatchSubscription.unsubscribe();
     }
 }

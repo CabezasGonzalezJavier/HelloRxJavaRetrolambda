@@ -1,18 +1,20 @@
 package com.thedeveloperworldisyours.hellorxjava.complex.rxjavaretrofit;
 
-import android.util.Log;
+import android.support.annotation.NonNull;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.thedeveloperworldisyours.hellorxjava.Utils.scheduler.BaseSchedulerProvider;
 import com.thedeveloperworldisyours.hellorxjava.complex.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by javierg on 08/12/2016.
@@ -20,13 +22,18 @@ import rx.schedulers.Schedulers;
 
 public class RetrofitPresenter implements RetrofitContract.Presenter {
 
+    @NonNull
+    private final BaseSchedulerProvider mSchedulerProvider;
+
+    @NonNull
     RetrofitContract.View mView;
     Observable<User> mObjectObservable;
     List<String> mGithubList;
     Retrofit mRetrofit;
 
-    public RetrofitPresenter(RetrofitContract.View view) {
+    public RetrofitPresenter(@NonNull RetrofitContract.View view, @NonNull BaseSchedulerProvider baseSchedulerProvider) {
         this.mView = view;
+        this.mSchedulerProvider = baseSchedulerProvider;
         mView.setPresenter(this);
     }
 
@@ -36,25 +43,27 @@ public class RetrofitPresenter implements RetrofitContract.Presenter {
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(GithubService.URL_BASE)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
         getUserList();
-        for (int i =0; mGithubList.size()>i; i++) {
+        for (int i = 0; mGithubList.size() > i; i++) {
             call(mGithubList.get(i));
         }
     }
 
     public void call(String userString) {
+
         mObjectObservable = mRetrofit
                 .create(GithubService.class)
-                .getUser(userString)
+                .getUserRx(userString)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
+//                .subscribeOn(mSchedulerProvider.ui());
 
         mObjectObservable.subscribe(
                 (User user) -> {
-                    GithubUserList githubUser = new GithubUserList( user.getLogin(), user.getEventsUrl(),user.getPublicRepos());
+                    GithubUserList githubUser = new GithubUserList(user.getLogin(), user.getEventsUrl(), user.getPublicRepos());
                     mView.showInfo(githubUser);
                 },
                 (Throwable error) ->
@@ -86,6 +95,7 @@ public class RetrofitPresenter implements RetrofitContract.Presenter {
 
     @Override
     public void unsubscribe() {
+//        mObjectObservable.cl
     }
 
 

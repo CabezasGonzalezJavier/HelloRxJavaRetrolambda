@@ -1,6 +1,6 @@
 package com.thedeveloperworldisyours.hellorxjava.simple.map;
 
-import rx.Single;
+import io.reactivex.Single;
 
 /**
  * Created by javierg on 06/12/2016.

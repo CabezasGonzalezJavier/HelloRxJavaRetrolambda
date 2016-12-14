@@ -1,13 +1,14 @@
 package com.thedeveloperworldisyours.hellorxjava.simple.asynchronous;
 
+import android.support.annotation.NonNull;
+
+import com.thedeveloperworldisyours.hellorxjava.Utils.scheduler.BaseSchedulerProvider;
 import com.thedeveloperworldisyours.hellorxjava.Utils.RestClient;
 
 import java.util.List;
 
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+
 
 /**
  * Created by javierg on 06/12/2016.
@@ -15,13 +16,16 @@ import rx.schedulers.Schedulers;
 
 public class AsynchronousPresenter implements AsynchronousContract.Presenter {
 
-    private Subscription mTvShowSubscription;
     private RestClient mRestClient;
+
+    @NonNull
+    private final BaseSchedulerProvider mSchedulerProvider;
 
     private AsynchronousContract.View mView;
 
-    public AsynchronousPresenter( RestClient restClient, AsynchronousContract.View view) {
+    public AsynchronousPresenter(RestClient restClient, @NonNull BaseSchedulerProvider schedulerProvider, AsynchronousContract.View view) {
         this.mRestClient = restClient;
+        this.mSchedulerProvider = schedulerProvider;
         this.mView = view;
 
         mView.setPresenter(this);
@@ -36,14 +40,18 @@ public class AsynchronousPresenter implements AsynchronousContract.Presenter {
      */
     @Override
     public void createObservable() {
-        Observable<List<String>> tvShowObservable = Observable.fromCallable(() -> mRestClient.getFavoriteTvShows());
-        mTvShowSubscription = tvShowObservable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+
+        getList()
+                .subscribeOn(mSchedulerProvider.computation())
+                .observeOn(mSchedulerProvider.ui())
                 .subscribe(
                         (List<String> tvShows) -> mView.displayTvShows(tvShows),
-                        (error) -> {},
+                        (error) -> mView.errorTvShows(),
                         () -> {});
+    }
+
+    public Observable<List<String>> getList(){
+        return Observable.fromCallable(() -> mRestClient.getFavoriteTvShows());
     }
 
     @Override
@@ -53,6 +61,6 @@ public class AsynchronousPresenter implements AsynchronousContract.Presenter {
 
     @Override
     public void unsubscribe() {
-        mTvShowSubscription.unsubscribe();
+//        mTvShowSubscription.unsubscribe();
     }
 }

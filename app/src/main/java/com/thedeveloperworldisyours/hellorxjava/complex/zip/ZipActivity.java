@@ -3,6 +3,7 @@ package com.thedeveloperworldisyours.hellorxjava.complex.zip;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.thedeveloperworldisyours.hellorxjava.Injection;
 import com.thedeveloperworldisyours.hellorxjava.R;
 import com.thedeveloperworldisyours.hellorxjava.Utils.ActivityUtils;
 
@@ -21,7 +22,7 @@ public class ZipActivity extends AppCompatActivity {
 
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), zipFragment, R.id.zip_act_container);
 
-        new ZipPresenter(zipFragment);
+        new ZipPresenter(zipFragment, Injection.provideSchedulerProvider());
 
     }
 

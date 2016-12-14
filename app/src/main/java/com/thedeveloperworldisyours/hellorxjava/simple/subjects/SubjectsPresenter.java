@@ -1,6 +1,7 @@
 package com.thedeveloperworldisyours.hellorxjava.simple.subjects;
 
-import rx.subjects.PublishSubject;
+
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by javierg on 06/12/2016.

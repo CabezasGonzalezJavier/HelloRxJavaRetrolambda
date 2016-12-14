@@ -3,8 +3,6 @@ package com.thedeveloperworldisyours.hellorxjava.complex.rxjavaretrofit;
 import com.thedeveloperworldisyours.hellorxjava.BasePresenter;
 import com.thedeveloperworldisyours.hellorxjava.BaseView;
 
-import java.util.List;
-
 /**
  * Created by javierg on 08/12/2016.
  */

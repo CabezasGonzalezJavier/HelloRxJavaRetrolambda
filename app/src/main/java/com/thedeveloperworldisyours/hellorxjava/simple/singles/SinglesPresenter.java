@@ -4,17 +4,16 @@ import com.thedeveloperworldisyours.hellorxjava.Utils.RestClient;
 
 import java.util.List;
 
-import rx.Single;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 
 /**
  * Created by javierg on 06/12/2016.
  */
 
 public class SinglesPresenter implements SinglesContract.Presenter {
-    private Subscription mTvShowSubscription;
     private RestClient mRestClient;
     public SinglesContract.View mView;
 
@@ -34,7 +33,7 @@ public class SinglesPresenter implements SinglesContract.Presenter {
     public void createSingle() {
         Single<List<String>> tvShowSingle = Single.fromCallable(() -> mRestClient.getFavoriteTvShows());
 
-        mTvShowSubscription = tvShowSingle
+        tvShowSingle
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((List<String> tvShows) -> mView.displayTvShows(tvShows),
@@ -48,6 +47,5 @@ public class SinglesPresenter implements SinglesContract.Presenter {
 
     @Override
     public void unsubscribe() {
-        mTvShowSubscription.unsubscribe();
     }
 }

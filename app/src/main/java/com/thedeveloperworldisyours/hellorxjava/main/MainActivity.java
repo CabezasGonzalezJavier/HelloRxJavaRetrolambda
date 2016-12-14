@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(5, "debonce");
         list.add(6, "Zip");
         list.add(7, "retrofit");
+        list.add(8, "flat map");
 
         return list;
     }

@@ -24,7 +24,8 @@
         <activity android:name=".simple.map.MapActivity" />
         <activity android:name=".simple.together.TogetherActivity" />
         <activity android:name=".complex.zip.ZipActivity" />
-        <activity android:name=".complex.rxjavaretrofit.RetrofitActivity"/>
+        <activity android:name=".complex.rxjavaretrofit.RetrofitActivity" />
+        <activity android:name=".complex.flatmap.FlatMapActivity" />
     </application>
 
 </manifest>
