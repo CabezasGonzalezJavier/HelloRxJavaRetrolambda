@@ -75,6 +75,12 @@ dependencies {
     testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testCompile "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrestVersion"
 
+    // Dependencies for Android unit tests
+    androidTestCompile "junit:junit:$rootProject.ext.junitVersion"
+    androidTestCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+    androidTestCompile "com.google.dexmaker:dexmaker:$rootProject.dexmaker"
+    androidTestCompile "com.google.dexmaker:dexmaker-mockito:$rootProject.dexmaker"
+
     // RxJava
     compile 'io.reactivex.rxjava2:rxjava:2.0.2'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
@@ -82,8 +88,8 @@ dependencies {
     // RxBinding
     compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
 
-    compile 'com.trello:rxlifecycle:0.4.0'
-    compile 'com.trello:rxlifecycle-components:0.4.0'
+    compile "com.trello:rxlifecycle:$rootProject.rxlifecycle"
+    compile "com.trello:rxlifecycle-components:$rootProject.rxlifecycle"
 
     // Butter Knife
     compile "com.jakewharton:butterknife:$rootProject.butterKnife"
@@ -97,4 +103,6 @@ dependencies {
     compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofit"
     compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofit"
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
+    testCompile 'org.json:json:20140107'
 }

@@ -57,9 +57,8 @@ public class RetrofitPresenter implements RetrofitContract.Presenter {
         mObjectObservable = mRetrofit
                 .create(GithubService.class)
                 .getUserRx(userString)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread());
-//                .subscribeOn(mSchedulerProvider.ui());
+                .subscribeOn(mSchedulerProvider.io())
+                .observeOn(mSchedulerProvider.ui());
 
         mObjectObservable.subscribe(
                 (User user) -> {

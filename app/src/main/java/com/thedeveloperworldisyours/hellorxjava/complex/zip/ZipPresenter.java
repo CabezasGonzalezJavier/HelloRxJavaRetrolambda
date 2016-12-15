@@ -36,7 +36,7 @@ public class ZipPresenter implements ZipContract.Presenter {
     }
 
     @Override
-    public void call() {
+    public void call(String userString) {
         Retrofit repo = new Retrofit.Builder()
                 .baseUrl("https://api.github.com")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -45,15 +45,15 @@ public class ZipPresenter implements ZipContract.Presenter {
 
         Observable<JsonObject> userObservable = repo
                 .create(UserService.class)
-                .getUser("Cabezas")
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread());
+                .getUser(userString)
+                .subscribeOn(mSchedulerProvider.computation())
+                .observeOn(mSchedulerProvider.ui());
 
         Observable<JsonArray> eventsObservable = repo
                 .create(EventsService.class)
-                .listEvents("Cabezas")
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread());
+                .listEvents(userString)
+                .subscribeOn(mSchedulerProvider.computation())
+                .observeOn(mSchedulerProvider.ui());
 
 
         mCombined = Observable.zip(userObservable, eventsObservable, (JsonObject jsonObject, JsonArray jsonElements) -> {
@@ -76,7 +76,7 @@ public class ZipPresenter implements ZipContract.Presenter {
 
     @Override
     public void subscribe() {
-        call();
+        call("Cabezas");
     }
 
     @Override

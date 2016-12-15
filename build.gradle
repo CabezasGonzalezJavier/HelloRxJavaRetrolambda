@@ -46,4 +46,6 @@ ext {
     rxandroidVersion = '1.2.1'
     sqlbriteVersion = '0.7.0'
     retrofit = '2.1.0'
+    rxlifecycle = '0.4.0'
+    dexmaker = '1.2'
 }

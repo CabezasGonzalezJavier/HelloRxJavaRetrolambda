@@ -15,7 +15,7 @@ public class ZipContract {
     }
 
     public interface Presenter extends BasePresenter {
-        void call();
+        void call(String User);
 
     }
 }
