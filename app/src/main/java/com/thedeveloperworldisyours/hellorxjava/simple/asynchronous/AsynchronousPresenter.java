@@ -5,9 +5,11 @@ import android.support.annotation.NonNull;
 import com.thedeveloperworldisyours.hellorxjava.Utils.scheduler.BaseSchedulerProvider;
 import com.thedeveloperworldisyours.hellorxjava.Utils.RestClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.internal.operators.observable.ObservableLastMaybe;
 
 
 /**
@@ -51,7 +53,27 @@ public class AsynchronousPresenter implements AsynchronousContract.Presenter {
     }
 
     public Observable<List<String>> getList(){
-        return Observable.fromCallable(() -> mRestClient.getFavoriteTvShows());
+//        return Observable.fromCallable(() -> mRestClient.getFavoriteTvShows());
+        return Observable.fromCallable(() -> getLisExample());
+    }
+
+    public List<String> getLisExample() {
+        List<String> tvShows = new ArrayList<>();
+        tvShows.add("The Joy of Painting");
+        tvShows.add("The Simpsons");
+        tvShows.add("Futurama");
+        tvShows.add("Rick & Morty");
+        tvShows.add("The X-Files");
+        tvShows.add("Star Trek: The Next Generation");
+        tvShows.add("Archer");
+        tvShows.add("30 Rock");
+        tvShows.add("Bob's Burgers");
+        tvShows.add("Breaking Bad");
+        tvShows.add("Parks and Recreation");
+        tvShows.add("House of Cards");
+        tvShows.add("Game of Thrones");
+        tvShows.add("Law And Order");
+        return tvShows;
     }
 
     @Override

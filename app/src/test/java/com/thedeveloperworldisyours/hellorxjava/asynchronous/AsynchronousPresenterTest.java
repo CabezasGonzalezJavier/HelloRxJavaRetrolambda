@@ -13,8 +13,15 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
+import io.reactivex.Observable;
+import io.reactivex.Single;
+import io.reactivex.subscribers.TestSubscriber;
+
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by javierg on 09/12/2016.
@@ -60,13 +67,25 @@ public class AsynchronousPresenterTest {
     }
 
     @Test
-    public void successful() {
+    public void successful() throws Exception {
 //        mRestClient.getFavoriteTvShows();
-        mPresenter.getList();
-        mPresenter.createObservable();
+
+        Callable<List<String>> callable = mock(Callable.class);
+
+        when(callable.call()).thenReturn(sShowTV);
+
+//        TestSubscriber<List<String>> testSubscriber = new TestSubscriber<List<String>>();
+
+//        Single
+//        .fromCallable(callable);
+mPresenter.createObservable();
+//        when(mPresenter.getList()).thenReturn(Observable.fromCallable(callable));
+
 
 //        setShowTVAvailable(sShowTV);
         verify(mView).displayTvShows(sShowTV);
+//        verify(callable).call();
+
     }
 
 //    @Test
