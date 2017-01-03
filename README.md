@@ -81,7 +81,7 @@ The project is setup using:
             }
     });
 ```
-whit lambda:
+with lambda:
 ```java  
     Observable<List<String>> listObservable = Observable.just(getColorList());
 
@@ -125,7 +125,7 @@ whit lambda:
                             }
                         });
 ```
-whit lambda:
+with lambda:
 ```java  
     Observable<List<String>> tvShowObservable = Observable.fromCallable(() -> mRestClient.getFavoriteTvShows());
     mTvShowSubscription = tvShowObservable
@@ -165,7 +165,7 @@ whit lambda:
                     }
                 }); 
 ```
-whit lambda:
+with lambda:
 ```java  
     Single<List<String>> tvShowSingle = Single.fromCallable(() -> mRestClient.getFavoriteTvShows());
 
@@ -199,7 +199,7 @@ whit lambda:
             }
         });
 ```
-whit lambda:
+with lambda:
 ```java  
     PublishSubject<Integer>  mCounterEmitter = PublishSubject.create();
     mCounterEmitter.subscribe(
