@@ -1,5 +1,29 @@
 # HelloRxJavaRetrolambda
-This is a example how to use RxJava 2 and Retrolambda.
+This is a example how to use RxJava 2 and Retrolambda, also you can find how to make junit test with RxJava and retrolambda.
+
+<p align="center">
+    <img src="https://github.com/CabezasGonzalezJavier/HelloRxJavaRetrolambda/blob/master/helloRxJavaRetrolambda.jpg" alt="Web Launcher"/>
+</p>
+**[You can see, this post in The Developer world is yours](http://thedeveloperworldisyours.com/android/rxjava-retrolambda/#sthash.e4rHACNL.dpbs)**
+  
+  Java 8 introduced Lambdas Expressions, unfortunately Android does not support Java 8, so we are not able to take advantage of this with RxJava. Luckily there is a library called **[Retrolambda](https://github.com/orfjackal/retrolambda)** which backports lambdas to previous versions of Java. There is also a **[gradle plugin](https://github.com/evant/gradle-retrolambda)** for Retrolambda that will allow the use of lambdas in an Android application.
+ 
+ In RxJava there are different elements:
+ <pre>
+ Simple
+    1.BASIC(Observable)
+    2.ASYNCHRONOUS
+    3.SINGLES
+    4.SUBJECTS
+    5.MAP
+    6.DEBOUNCES
+ Complex
+    7.Flat Map
+    8.Concat Map
+    9.Retrofit with RxJava 2
+    
+</pre>
+
 
 A simple implementation of the Model-View-Presenter pattern with no architectural frameworks.
 
@@ -33,30 +57,10 @@ The project is setup using:
  * **[Retrofit](https://github.com/square/retrofit)**
  * **[GSON](https://github.com/google/gson)**
  * **[Guava (checking null)](https://github.com/google/guava)**
+ * **[Mockito](http://mockito.org/)**
+ * **[JUnit](http://http://junit.org/junit4/)**
  
- 
-<p align="center">
-    <img src="https://github.com/CabezasGonzalezJavier/HelloRxJavaRetrolambda/blob/master/helloRxJavaRetrolambda.jpg" alt="Web Launcher"/>
-</p>
-**[You can see, this post in The Developer world is yours](http://thedeveloperworldisyours.com/android/rxjava-retrolambda/#sthash.e4rHACNL.dpbs)**
-  
-  Java 8 introduced Lambdas Expressions, unfortunately Android does not support Java 8, so we are not able to take advantage of this with RxJava. Luckily there is a library called **[Retrolambda](https://github.com/orfjackal/retrolambda)** which backports lambdas to previous versions of Java. There is also a **[gradle plugin](https://github.com/evant/gradle-retrolambda)** for Retrolambda that will allow the use of lambdas in an Android application.
- 
- In RxJava there are different elements:
- <pre>
- Simple
-    1.BASIC(Observable)
-    2.ASYNCHRONOUS
-    3.SINGLES
-    4.SUBJECTS
-    5.MAP
-    6.DEBOUNCES
- Complex
-    7.Flat Map
-    8.Concat Map
-    9.Retrofit with RxJava 2
-    
-</pre>
+
 
 # Simple
 
